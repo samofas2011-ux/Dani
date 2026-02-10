@@ -12,811 +12,527 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: #f8f9fa;
-            min-height: 100vh;
-            padding: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
 
-        /* Top Navigation Bar */
-        .top-nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            padding: 15px 30px;
+        /* Navigation Menu */
+        .navbar {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        .nav-content {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            padding: 0 20px;
         }
 
         .logo {
+            color: white;
             font-size: 1.5em;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-
-        .logo-icon {
-            color: #ff6b6b;
-            margin-right: 8px;
-        }
-
-        .settings-bar {
+            font-weight: bold;
+            padding: 15px 0;
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            display: block;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-menu li a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 15px;
             align-items: center;
         }
 
-        .selector {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .selector label {
-            font-weight: 600;
-            color: #495057;
-            font-size: 0.9em;
-        }
-
-        .selector select {
-            padding: 8px 12px;
-            border: 2px solid #e9ecef;
-            border-radius: 6px;
-            font-size: 0.9em;
+        .icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
             cursor: pointer;
-            background: white;
-            font-family: inherit;
-            transition: border-color 0.3s;
+            padding: 5px 10px;
+            transition: transform 0.2s;
         }
 
-        .selector select:hover {
-            border-color: #ff6b6b;
+        .icon-btn:hover {
+            transform: scale(1.1);
         }
 
-        .selector select:focus {
-            outline: none;
-            border-color: #ff6b6b;
+        .cart-badge {
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7em;
+            position: absolute;
+            top: -5px;
+            right: -5px;
         }
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* Language & Currency Selectors */
+        .selectors {
+            display: flex;
+            gap: 10px;
         }
 
-        /* Header Section */
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 60px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 16px;
+        .selectors select {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .selectors select option {
+            background: #11998e;
             color: white;
         }
 
-        h1 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
         }
 
-        .tagline {
-            font-size: 1.2em;
-            font-weight: 400;
-            opacity: 0.95;
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* Intro Section */
-        .intro {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 50px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border-left: 4px solid #ff6b6b;
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 20px;
         }
 
-        .intro p {
-            font-size: 1.1em;
-            line-height: 1.7;
-            color: #495057;
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        /* Section Title */
         .section-title {
             text-align: center;
-            font-size: 2.2em;
+            font-size: 2.5em;
             margin-bottom: 40px;
-            color: #2c3e50;
-            font-weight: 700;
+            color: #11998e;
         }
 
-        /* Products Grid */
-        .products-grid {
+        /* About Section */
+        .about-content {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        /* Product Grid */
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin-top: 30px;
         }
 
         .product-card {
             background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #e9ecef;
+            text-align: center;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
-        .product-image {
-            width: 100%;
-            height: 280px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5em;
-            border-bottom: 1px solid #e9ecef;
-            background: #f8f9fa;
-        }
-
-        .product-image.painting {
-            background: linear-gradient(135deg, #ffeaa7 0%, #fd79a8 50%, #a29bfe 100%);
-        }
-
-        .product-image.dough {
-            background: linear-gradient(135deg, #74b9ff 0%, #a29bfe 50%, #fd79a8 100%);
-        }
-
-        .product-image.flowers {
-            background: linear-gradient(135deg, #ff7675 0%, #fdcb6e 50%, #55efc4 100%);
-        }
-
-        .product-info {
-            padding: 24px;
-        }
-
-        .product-title {
-            font-size: 1.4em;
-            color: #2c3e50;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .product-description {
-            color: #6c757d;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            font-size: 0.95em;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-price {
-            font-size: 1.8em;
-            color: #ff6b6b;
-            font-weight: 700;
-        }
-
-        .product-status {
-            display: inline-block;
-            padding: 8px 16px;
-            background: #51cf66;
-            color: white;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-status.sold {
-            background: #868e96;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 12px;
-            margin-top: 60px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        .contact-section h2 {
-            text-align: center;
-            font-size: 2.2em;
+        .product-icon {
+            font-size: 4em;
             margin-bottom: 15px;
-            color: #2c3e50;
-            font-weight: 700;
         }
 
-        .contact-subtitle {
-            text-align: center;
-            font-size: 1.1em;
-            margin-bottom: 40px;
-            color: #6c757d;
+        .product-card h3 {
+            color: #11998e;
+            margin-bottom: 10px;
+            font-size: 1.5em;
         }
 
+        .product-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .available {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .sold {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, #0d7d72 0%, #2dd464 100%);
+        }
+
+        .add-to-cart:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Contact Form */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
-        label {
+        .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #495057;
-            font-size: 1em;
+            margin-bottom: 5px;
+            color: #11998e;
+            font-weight: bold;
         }
 
-        input, textarea, select {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e9ecef;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
-            font-size: 1em;
             font-family: inherit;
-            background: white;
-            transition: border-color 0.3s;
+            font-size: 1em;
         }
 
-        input:focus, textarea:focus, select:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
+            border-color: #11998e;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
             border: none;
-            padding: 16px 40px;
+            padding: 15px 40px;
+            border-radius: 25px;
             font-size: 1.1em;
-            border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
             width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transition: transform 0.2s;
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
+            transform: scale(1.05);
         }
 
         /* Footer */
         footer {
+            background: #2c3e50;
+            color: white;
             text-align: center;
+            padding: 30px 20px;
             margin-top: 60px;
-            padding: 40px 20px;
-            color: #6c757d;
-            border-top: 1px solid #e9ecef;
         }
 
-        footer p {
-            margin-bottom: 10px;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Mobile Responsive */
+        .footer-content p {
+            margin: 10px 0;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
+            .nav-menu {
+                display: none; /* You can add a hamburger menu later */
+            }
+
+            .hero h1 {
                 font-size: 2em;
             }
-            
-            .products-grid {
+
+            .product-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .nav-content {
-                justify-content: center;
-            }
-
-            .logo {
-                width: 100%;
-                text-align: center;
-            }
-
-            .settings-bar {
-                width: 100%;
-                justify-content: center;
-            }
-
-            header {
-                padding: 40px 20px;
-            }
-
-            .contact-section {
-                padding: 40px 24px;
-            }
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Top Navigation -->
-    <div class="top-nav">
-        <div class="nav-content">
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="nav-container">
             <div class="logo">
-                <span class="logo-icon">🎨</span>
-                <span data-translate="title">My Creative Corner</span>
+                🎨 My Creative Corner
             </div>
-            <div class="settings-bar">
-                <div class="selector">
-                    <label for="language">🌍</label>
-                    <select id="language" onchange="changeLanguage()">
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
-                        <option value="it">Italiano</option>
-                    </select>
-                </div>
-                <div class="selector">
-                    <label for="currency">💰</label>
-                    <select id="currency" onchange="changeCurrency()">
-                        <option value="USD">USD ($)</option>
-                        <option value="EUR">EUR (€)</option>
-                        <option value="GBP">GBP (£)</option>
-                        <option value="JPY">JPY (¥)</option>
-                        <option value="CAD">CAD ($)</option>
-                        <option value="AUD">AUD ($)</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Container -->
-    <div class="container">
-        <header>
-            <h1 data-translate="title">My Creative Corner</h1>
-            <p class="tagline" data-translate="tagline">Handmade Crafts Made with Love</p>
-        </header>
-
-        <div class="intro">
-            <p data-translate="intro">Hi! I'm [Your Name] and I'm 8 years old! I love making things with my hands. Every piece here is special because I made it myself! Each craft is unique and one-of-a-kind! 🌈</p>
-        </div>
-
-        <h2 class="section-title" data-translate="my-creations">My Creations</h2>
-
-        <div class="products-grid">
-            <!-- Product 1: Painting -->
-            <div class="product-card">
-                <div class="product-image painting">
-                    🎨
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title" data-translate="product1-title">Rainbow Sunset Painting</h3>
-                    <p class="product-description" data-translate="product1-desc">A beautiful sunset with lots of colors! I used acrylics to paint this happy scene with a big sun and fluffy clouds.</p>
-                    <div class="product-footer">
-                        <span class="product-price" data-price="15"></span>
-                        <span class="product-status" data-translate="available">Available</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 2: Dough Creation -->
-            <div class="product-card">
-                <div class="product-image dough">
-                    🐶
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title" data-translate="product2-title">Play Dough Puppy</h3>
-                    <p class="product-description" data-translate="product2-desc">A cute little puppy made from colorful play dough! It has a happy face and a wagging tail. Air-dried and ready to display!</p>
-                    <div class="product-footer">
-                        <span class="product-price" data-price="8"></span>
-                        <span class="product-status" data-translate="available">Available</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3: Painting -->
-            <div class="product-card">
-                <div class="product-image painting">
-                    🌊
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title" data-translate="product3-title">Ocean Adventure</h3>
-                    <p class="product-description" data-translate="product3-desc">A painting of the deep blue ocean with fish and a happy dolphin! I used lots of blues and greens to make it look real.</p>
-                    <div class="product-footer">
-                        <span class="product-price" data-price="15"></span>
-                        <span class="product-status sold" data-translate="sold">Sold</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 4: Dough Creation -->
-            <div class="product-card">
-                <div class="product-image dough">
-                    🦖
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title" data-translate="product4-title">Friendly Dinosaur</h3>
-                    <p class="product-description" data-translate="product4-desc">A green dinosaur made from play dough! He's friendly and loves to smile. Perfect for your desk or shelf!</p>
-                    <div class="product-footer">
-                        <span class="product-price" data-price="10"></span>
-                        <span class="product-status" data-translate="available">Available</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 5: Painting -->
-            <div class="product-card">
-                <div class="product-image flowers">
-                    🌸
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title" data-translate="product5-title">Spring Flowers</h3>
-                    <p class="product-description" data-translate="product5-desc">Pretty pink and yellow flowers in a garden! I painted this thinking about spring and all the beautiful flowers that bloom.</p>
-                    <div class="product-footer">
-                        <span class="product-price" data-price="12"></span>
-                        <span class="product-status" data-translate="available">Available</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 6: Dough Creation -->
-            <div class="product-card">
-                <div class="product-image dough">
-                    🍕
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title" data-translate="product6-title">Mini Pizza</h3>
-                    <p class="product-description" data-translate="product6-desc">A tiny pizza made from play dough with pepperoni and cheese! Looks good enough to eat (but please don't!).</p>
-                    <div class="product-footer">
-                        <span class="product-price" data-price="6"></span>
-                        <span class="product-status" data-translate="available">Available</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-section">
-            <h2 data-translate="contact-title">Want to Buy Something?</h2>
-            <p class="contact-subtitle" data-translate="contact-subtitle">Fill out this form and my parents will help get back to you!</p>
             
-            <form class="contact-form" id="contactForm">
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <div class="selectors">
+                    <select id="language">
+                        <option value="en">🌍 EN</option>
+                        <option value="es">ES</option>
+                        <option value="fr">FR</option>
+                        <option value="de">DE</option>
+                        <option value="it">IT</option>
+                    </select>
+                    
+                    <select id="currency">
+                        <option value="usd">💰 USD</option>
+                        <option value="eur">EUR</option>
+                        <option value="gbp">GBP</option>
+                        <option value="jpy">JPY</option>
+                        <option value="cad">CAD</option>
+                        <option value="aud">AUD</option>
+                        <option value="crc">CRC (₡)</option>
+                    </select>
+                </div>
+                
+                <button class="icon-btn" onclick="alert('Cart feature coming soon! 🛒')">
+                    🛒
+                    <span class="cart-badge" id="cart-count" style="display: none;">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>My Creative Corner</h1>
+        <p>Handmade Crafts Made with Love ❤️</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>Hi! I'm Dani and I'm 8 years old! 👋</p>
+            <p>I love making things with my hands. Every piece here is special because I made it myself!</p>
+            <p>Each craft is unique and one-of-a-kind! 🌈</p>
+            <p>Thank you for visiting my creative corner!</p>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop">
+        <h2 class="section-title">My Creations</h2>
+        <div class="product-grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-icon">🎨</div>
+                <h3>Rainbow Sunset Painting</h3>
+                <p>A beautiful sunset with lots of colors! I used acrylics to paint this happy scene with a big sun and fluffy clouds.</p>
+                <span class="status-badge available">Available</span>
+                <br>
+                <button class="add-to-cart" onclick="addToCart('Rainbow Sunset Painting')">Add to Cart</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-icon">🐶</div>
+                <h3>Play Dough Puppy</h3>
+                <p>A cute little puppy made from colorful play dough! It has a happy face and a wagging tail. Air-dried and ready to display!</p>
+                <span class="status-badge available">Available</span>
+                <br>
+                <button class="add-to-cart" onclick="addToCart('Play Dough Puppy')">Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-icon">🌊</div>
+                <h3>Ocean Adventure</h3>
+                <p>A painting of the deep blue ocean with fish and a happy dolphin! I used lots of blues and greens to make it look real.</p>
+                <span class="status-badge sold">Sold</span>
+                <br>
+                <button class="add-to-cart" disabled>Sold Out</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-icon">🦖</div>
+                <h3>Friendly Dinosaur</h3>
+                <p>A green dinosaur made from play dough! He's friendly and loves to smile. Perfect for your desk or shelf!</p>
+                <span class="status-badge available">Available</span>
+                <br>
+                <button class="add-to-cart" onclick="addToCart('Friendly Dinosaur')">Add to Cart</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-icon">🌸</div>
+                <h3>Spring Flowers</h3>
+                <p>Pretty pink and yellow flowers in a garden! I painted this thinking about spring and all the beautiful flowers that bloom.</p>
+                <span class="status-badge available">Available</span>
+                <br>
+                <button class="add-to-cart" onclick="addToCart('Spring Flowers')">Add to Cart</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-icon">🍕</div>
+                <h3>Mini Pizza</h3>
+                <p>A tiny pizza made from play dough with pepperoni and cheese! Looks good enough to eat (but please don't!).</p>
+                <span class="status-badge available">Available</span>
+                <br>
+                <button class="add-to-cart" onclick="addToCart('Mini Pizza')">Add to Cart</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Want to Buy Something?</h2>
+        <div class="contact-form">
+            <form onsubmit="handleSubmit(event)">
                 <div class="form-group">
-                    <label for="name" data-translate="form-name">Your Name:</label>
+                    <label for="name">Your Name:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="email" data-translate="form-email">Your Email:</label>
+                    <label for="email">Your Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="product" data-translate="form-product">Which Creation Do You Want?</label>
-                    <select id="product" name="product" required>
-                        <option value="" data-translate="form-choose">Choose one...</option>
-                        <option value="Rainbow Sunset Painting" data-translate-option="product1-title">Rainbow Sunset Painting</option>
-                        <option value="Play Dough Puppy" data-translate-option="product2-title">Play Dough Puppy</option>
-                        <option value="Friendly Dinosaur" data-translate-option="product4-title">Friendly Dinosaur</option>
-                        <option value="Spring Flowers" data-translate-option="product5-title">Spring Flowers</option>
-                        <option value="Mini Pizza" data-translate-option="product6-title">Mini Pizza</option>
-                        <option value="Other" data-translate="form-other">Something else / Just saying hi!</option>
+                    <label for="item">Which Creation Do You Want?</label>
+                    <select id="item" name="item" required>
+                        <option value="">Choose one...</option>
+                        <option value="rainbow">Rainbow Sunset Painting</option>
+                        <option value="puppy">Play Dough Puppy</option>
+                        <option value="dinosaur">Friendly Dinosaur</option>
+                        <option value="flowers">Spring Flowers</option>
+                        <option value="pizza">Mini Pizza</option>
+                        <option value="other">Something else / Just saying hi!</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="message" data-translate="form-message">Your Message:</label>
-                    <textarea id="message" name="message" data-translate-placeholder="form-message-placeholder"></textarea>
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">
-                    <span data-translate="form-submit">Send Message</span> →
-                </button>
+                <button type="submit" class="submit-btn">Send Message →</button>
             </form>
         </div>
+    </section>
 
-        <footer>
-            <p data-translate="footer1">All crafts are made with love and creativity</p>
-            <p data-translate="footer2">Each piece is one-of-a-kind and handmade by me</p>
-            <p style="margin-top: 20px;">© 2024 <span data-translate="title">My Creative Corner</span> | <span data-translate="footer3">Made with ❤️</span></p>
-        </footer>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>✨ All crafts are made with love and creativity ✨</p>
+            <p>🎨 Each piece is one-of-a-kind and handmade by me 🎨</p>
+            <p>© 2024 My Creative Corner | Made with ❤️</p>
+        </div>
+    </footer>
 
     <script>
-        // Translation data
-        const translations = {
-            en: {
-                language: "Language",
-                currency: "Currency",
-                title: "My Creative Corner",
-                tagline: "Handmade Crafts Made with Love",
-                intro: "Hi! I'm [Your Name] and I'm 8 years old! I love making things with my hands. Every piece here is special because I made it myself! Each craft is unique and one-of-a-kind! 🌈",
-                "my-creations": "My Creations",
-                "product1-title": "Rainbow Sunset Painting",
-                "product1-desc": "A beautiful sunset with lots of colors! I used acrylics to paint this happy scene with a big sun and fluffy clouds.",
-                "product2-title": "Play Dough Puppy",
-                "product2-desc": "A cute little puppy made from colorful play dough! It has a happy face and a wagging tail. Air-dried and ready to display!",
-                "product3-title": "Ocean Adventure",
-                "product3-desc": "A painting of the deep blue ocean with fish and a happy dolphin! I used lots of blues and greens to make it look real.",
-                "product4-title": "Friendly Dinosaur",
-                "product4-desc": "A green dinosaur made from play dough! He's friendly and loves to smile. Perfect for your desk or shelf!",
-                "product5-title": "Spring Flowers",
-                "product5-desc": "Pretty pink and yellow flowers in a garden! I painted this thinking about spring and all the beautiful flowers that bloom.",
-                "product6-title": "Mini Pizza",
-                "product6-desc": "A tiny pizza made from play dough with pepperoni and cheese! Looks good enough to eat (but please don't!).",
-                available: "Available",
-                sold: "Sold",
-                "contact-title": "Want to Buy Something?",
-                "contact-subtitle": "Fill out this form and my parents will help get back to you!",
-                "form-name": "Your Name:",
-                "form-email": "Your Email:",
-                "form-product": "Which Creation Do You Want?",
-                "form-choose": "Choose one...",
-                "form-other": "Something else / Just saying hi!",
-                "form-message": "Your Message:",
-                "form-message-placeholder": "Tell me what you like about my creation!",
-                "form-submit": "Send Message",
-                footer1: "All crafts are made with love and creativity",
-                footer2: "Each piece is one-of-a-kind and handmade by me",
-                footer3: "Made with ❤️"
-            },
-            es: {
-                language: "Idioma",
-                currency: "Moneda",
-                title: "Mi Rincón Creativo",
-                tagline: "Artesanías Hechas con Amor",
-                intro: "¡Hola! Soy [Tu Nombre] y tengo 8 años! Me encanta hacer cosas con mis manos. ¡Cada pieza aquí es especial porque la hice yo mismo! ¡Cada artesanía es única! 🌈",
-                "my-creations": "Mis Creaciones",
-                "product1-title": "Pintura de Atardecer Arcoíris",
-                "product1-desc": "¡Un hermoso atardecer con muchos colores! Usé acrílicos para pintar esta escena feliz con un gran sol y nubes esponjosas.",
-                "product2-title": "Perrito de Plastilina",
-                "product2-desc": "¡Un lindo perrito hecho de plastilina colorida! Tiene una cara feliz y una cola que mueve. ¡Secado al aire y listo para exhibir!",
-                "product3-title": "Aventura Oceánica",
-                "product3-desc": "¡Una pintura del océano azul profundo con peces y un delfín feliz! Usé muchos azules y verdes para que se vea real.",
-                "product4-title": "Dinosaurio Amigable",
-                "product4-desc": "¡Un dinosaurio verde hecho de plastilina! Es amigable y le encanta sonreír. ¡Perfecto para tu escritorio o estante!",
-                "product5-title": "Flores de Primavera",
-                "product5-desc": "¡Bonitas flores rosas y amarillas en un jardín! Pinté esto pensando en la primavera y todas las flores hermosas que florecen.",
-                "product6-title": "Mini Pizza",
-                "product6-desc": "¡Una pequeña pizza hecha de plastilina con pepperoni y queso! Se ve lo suficientemente buena para comer (¡pero por favor no lo hagas!).",
-                available: "Disponible",
-                sold: "Vendido",
-                "contact-title": "¿Quieres Comprar Algo?",
-                "contact-subtitle": "¡Completa este formulario y mis padres te responderán!",
-                "form-name": "Tu Nombre:",
-                "form-email": "Tu Email:",
-                "form-product": "¿Qué Creación Quieres?",
-                "form-choose": "Elige una...",
-                "form-other": "¡Otra cosa / Solo saludando!",
-                "form-message": "Tu Mensaje:",
-                "form-message-placeholder": "¡Dime qué te gusta de mi creación!",
-                "form-submit": "Enviar Mensaje",
-                footer1: "Todas las artesanías están hechas con amor y creatividad",
-                footer2: "Cada pieza es única y hecha a mano por mí",
-                footer3: "Hecho con ❤️"
-            },
-            fr: {
-                language: "Langue",
-                currency: "Devise",
-                title: "Mon Coin Créatif",
-                tagline: "Artisanat Fait avec Amour",
-                intro: "Salut! Je m'appelle [Ton Nom] et j'ai 8 ans! J'adore faire des choses avec mes mains. Chaque pièce ici est spéciale car je l'ai faite moi-même! Chaque artisanat est unique! 🌈",
-                "my-creations": "Mes Créations",
-                "product1-title": "Peinture de Coucher de Soleil Arc-en-ciel",
-                "product1-desc": "Un beau coucher de soleil avec beaucoup de couleurs! J'ai utilisé des acryliques pour peindre cette scène joyeuse avec un grand soleil et des nuages moelleux.",
-                "product2-title": "Chiot en Pâte à Modeler",
-                "product2-desc": "Un mignon petit chiot fait de pâte à modeler colorée! Il a un visage heureux et une queue qui remue. Séché à l'air et prêt à être exposé!",
-                "product3-title": "Aventure Océanique",
-                "product3-desc": "Une peinture de l'océan bleu profond avec des poissons et un dauphin heureux! J'ai utilisé beaucoup de bleus et de verts pour le rendre réel.",
-                "product4-title": "Dinosaure Amical",
-                "product4-desc": "Un dinosaure vert fait de pâte à modeler! Il est amical et adore sourire. Parfait pour votre bureau ou étagère!",
-                "product5-title": "Fleurs de Printemps",
-                "product5-desc": "De jolies fleurs roses et jaunes dans un jardin! J'ai peint ceci en pensant au printemps et à toutes les belles fleurs qui fleurissent.",
-                "product6-title": "Mini Pizza",
-                "product6-desc": "Une petite pizza faite de pâte à modeler avec du pepperoni et du fromage! Ça a l'air assez bon pour être mangé (mais ne le faites pas s'il vous plaît!).",
-                available: "Disponible",
-                sold: "Vendu",
-                "contact-title": "Vous Voulez Acheter Quelque Chose?",
-                "contact-subtitle": "Remplissez ce formulaire et mes parents vous répondront!",
-                "form-name": "Votre Nom:",
-                "form-email": "Votre Email:",
-                "form-product": "Quelle Création Voulez-vous?",
-                "form-choose": "Choisissez-en un...",
-                "form-other": "Autre chose / Juste pour dire bonjour!",
-                "form-message": "Votre Message:",
-                "form-message-placeholder": "Dites-moi ce que vous aimez dans ma création!",
-                "form-submit": "Envoyer le Message",
-                footer1: "Tous les artisanats sont faits avec amour et créativité",
-                footer2: "Chaque pièce est unique et faite à la main par moi",
-                footer3: "Fait avec ❤️"
-            },
-            de: {
-                language: "Sprache",
-                currency: "Währung",
-                title: "Meine Kreative Ecke",
-                tagline: "Handgemachtes Kunsthandwerk mit Liebe",
-                intro: "Hallo! Ich bin [Dein Name] und ich bin 8 Jahre alt! Ich liebe es, Dinge mit meinen Händen zu machen. Jedes Stück hier ist besonders, weil ich es selbst gemacht habe! Jedes Handwerk ist einzigartig! 🌈",
-                "my-creations": "Meine Kreationen",
-                "product1-title": "Regenbogen-Sonnenuntergangs-Gemälde",
-                "product1-desc": "Ein wunderschöner Sonnenuntergang mit vielen Farben! Ich habe Acrylfarben verwendet, um diese fröhliche Szene mit einer großen Sonne und flauschigen Wolken zu malen.",
-                "product2-title": "Knete-Welpe",
-                "product2-desc": "Ein süßer kleiner Welpe aus bunter Knete! Er hat ein fröhliches Gesicht und einen wedelnden Schwanz. Luftgetrocknet und bereit zur Ausstellung!",
-                "product3-title": "Ozean-Abenteuer",
-                "product3-desc": "Ein Gemälde des tiefblauen Ozeans mit Fischen und einem glücklichen Delfin! Ich habe viele Blau- und Grüntöne verwendet, damit es echt aussieht.",
-                "product4-title": "Freundlicher Dinosaurier",
-                "product4-desc": "Ein grüner Dinosaurier aus Knete! Er ist freundlich und lächelt gerne. Perfekt für deinen Schreibtisch oder Regal!",
-                "product5-title": "Frühlingsblumen",
-                "product5-desc": "Hübsche rosa und gelbe Blumen in einem Garten! Ich habe dies gemalt und dabei an den Frühling und all die schönen Blumen gedacht, die blühen.",
-                "product6-title": "Mini-Pizza",
-                "product6-desc": "Eine winzige Pizza aus Knete mit Peperoni und Käse! Sieht gut genug zum Essen aus (aber bitte nicht!).",
-                available: "Verfügbar",
-                sold: "Verkauft",
-                "contact-title": "Möchten Sie Etwas Kaufen?",
-                "contact-subtitle": "Füllen Sie dieses Formular aus und meine Eltern werden sich bei Ihnen melden!",
-                "form-name": "Ihr Name:",
-                "form-email": "Ihre E-Mail:",
-                "form-product": "Welche Kreation Möchten Sie?",
-                "form-choose": "Wählen Sie eine...",
-                "form-other": "Etwas anderes / Nur Hallo sagen!",
-                "form-message": "Ihre Nachricht:",
-                "form-message-placeholder": "Sagen Sie mir, was Ihnen an meiner Kreation gefällt!",
-                "form-submit": "Nachricht Senden",
-                footer1: "Alle Handwerke sind mit Liebe und Kreativität gemacht",
-                footer2: "Jedes Stück ist einzigartig und von mir handgemacht",
-                footer3: "Mit ❤️ gemacht"
-            },
-            it: {
-                language: "Lingua",
-                currency: "Valuta",
-                title: "Il Mio Angolo Creativo",
-                tagline: "Artigianato Fatto con Amore",
-                intro: "Ciao! Sono [Il Tuo Nome] e ho 8 anni! Amo fare cose con le mie mani. Ogni pezzo qui è speciale perché l'ho fatto io stesso! Ogni artigianato è unico! 🌈",
-                "my-creations": "Le Mie Creazioni",
-                "product1-title": "Dipinto del Tramonto Arcobaleno",
-                "product1-desc": "Un bellissimo tramonto con tanti colori! Ho usato gli acrilici per dipingere questa scena felice con un grande sole e nuvole soffici.",
-                "product2-title": "Cucciolo di Pasta Modellabile",
-                "product2-desc": "Un simpatico cucciolo fatto di pasta modellabile colorata! Ha una faccia felice e una coda che scodinzola. Asciugato all'aria e pronto per essere esposto!",
-                "product3-title": "Avventura Oceanica",
-                "product3-desc": "Un dipinto dell'oceano blu profondo con pesci e un delfino felice! Ho usato molti blu e verdi per renderlo reale.",
-                "product4-title": "Dinosauro Amichevole",
-                "product4-desc": "Un dinosauro verde fatto di pasta modellabile! È amichevole e ama sorridere. Perfetto per la tua scrivania o scaffale!",
-                "product5-title": "Fiori di Primavera",
-                "product5-desc": "Bellissimi fiori rosa e gialli in un giardino! Ho dipinto questo pensando alla primavera e a tutti i bei fiori che sbocciano.",
-                "product6-title": "Mini Pizza",
-                "product6-desc": "Una piccola pizza fatta di pasta modellabile con peperoni e formaggio! Sembra abbastanza buona da mangiare (ma per favore non farlo!).",
-                available: "Disponibile",
-                sold: "Venduto",
-                "contact-title": "Vuoi Comprare Qualcosa?",
-                "contact-subtitle": "Compila questo modulo e i miei genitori ti risponderanno!",
-                "form-name": "Il Tuo Nome:",
-                "form-email": "La Tua Email:",
-                "form-product": "Quale Creazione Vuoi?",
-                "form-choose": "Scegline uno...",
-                "form-other": "Qualcos'altro / Solo per salutare!",
-                "form-message": "Il Tuo Messaggio:",
-                "form-message-placeholder": "Dimmi cosa ti piace della mia creazione!",
-                "form-submit": "Invia Messaggio",
-                footer1: "Tutti gli artigianati sono fatti con amore e creatività",
-                footer2: "Ogni pezzo è unico e fatto a mano da me",
-                footer3: "Fatto con ❤️"
-            }
-        };
-
-        // Currency conversion rates (base: USD)
-        const currencyRates = {
-            USD: { symbol: '$', rate: 1 },
-            EUR: { symbol: '€', rate: 0.92 },
-            GBP: { symbol: '£', rate: 0.79 },
-            JPY: { symbol: '¥', rate: 149.50 },
-            CAD: { symbol: 'C$', rate: 1.36 },
-            AUD: { symbol: 'A$', rate: 1.53 }
-        };
-
-        // Current settings
-        let currentLanguage = 'en';
-        let currentCurrency = 'USD';
-
-        // Change language function
-        function changeLanguage() {
-            currentLanguage = document.getElementById('language').value;
-            
-            // Update all translatable elements
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[currentLanguage][key]) {
-                    element.textContent = translations[currentLanguage][key];
-                }
-            });
-
-            // Update select options
-            document.querySelectorAll('[data-translate-option]').forEach(option => {
-                const key = option.getAttribute('data-translate-option');
-                if (translations[currentLanguage][key]) {
-                    option.textContent = translations[currentLanguage][key];
-                }
-            });
-
-            // Update placeholder
-            const placeholder = document.querySelector('[data-translate-placeholder]');
-            if (placeholder) {
-                placeholder.placeholder = translations[currentLanguage]['form-message-placeholder'];
-            }
-
-            // Update prices after language change
-            updatePrices();
+        // Add to Cart functionality
+        let cartCount = 0;
+        
+        function addToCart(itemName) {
+            cartCount++;
+            const cartBadge = document.getElementById('cart-count');
+            cartBadge.textContent = cartCount;
+            cartBadge.style.display = 'block';
+            alert(`"${itemName}" added to cart! 🎉\n\nCart items: ${cartCount}`);
         }
 
-        // Change currency function
-        function changeCurrency() {
-            currentCurrency = document.getElementById('currency').value;
-            updatePrices();
-        }
-
-        // Update all prices
-        function updatePrices() {
-            document.querySelectorAll('[data-price]').forEach(element => {
-                const basePrice = parseFloat(element.getAttribute('data-price'));
-                const currency = currencyRates[currentCurrency];
-                const convertedPrice = (basePrice * currency.rate).toFixed(currentCurrency === 'JPY' ? 0 : 2);
-                element.textContent = `${currency.symbol}${convertedPrice}`;
-            });
-        }
-
-        // Initialize prices on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            updatePrices();
-        });
-
-        // Contact form handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const product = document.getElementById('product').value;
+            const item = document.getElementById('item').value;
             const message = document.getElementById('message').value;
             
-            const subject = encodeURIComponent(`Interest in: ${product}`);
-            const body = encodeURIComponent(
-                `Hi!\n\nMy name is ${name}\n` +
-                `My email is: ${email}\n\n` +
-                `I'm interested in: ${product}\n\n` +
-                `Message: ${message}\n\n` +
-                `Thanks!`
-            );
+            alert(`Thank you ${name}! 🎨\n\nYour message has been received!\nWe'll get back to you at ${email} soon!`);
             
-            window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
-            
-            alert(translations[currentLanguage]['form-submit'] + ' ✅');
-        });
+            // Reset form
+            event.target.reset();
+        }
     </script>
+
 </body>
 </html>
