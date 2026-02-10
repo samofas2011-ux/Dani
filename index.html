@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Rincón Creativo - Manualidades Hechas a Mano</title>
+    <title>Mi Rincón Creativo - Manualidades Premium Hechas a Mano</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD&disable-funding=credit,card"></script>
+    
     <style>
         * {
             margin: 0;
@@ -11,92 +18,146 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        :root {
+            --primary-teal: #0d9488;
+            --primary-emerald: #059669;
+            --accent-gold: #f59e0b;
+            --dark-navy: #1e293b;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #334155;
+            --text-light: #64748b;
         }
 
-        /* Navigation Menu */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+        }
+
+        /* Enhanced Navigation */
         .navbar {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.95) 0%, rgba(5, 150, 105, 0.95) 100%);
+            backdrop-filter: blur(10px);
             padding: 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: linear-gradient(135deg, rgba(13, 148, 136, 1) 0%, rgba(5, 150, 105, 1) 100%);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         .logo {
             color: white;
-            font-size: 1.5em;
-            font-weight: bold;
-            padding: 15px 0;
+            font-size: 1.6em;
+            font-weight: 700;
+            padding: 20px 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-icon {
+            font-size: 1.4em;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 0;
+            gap: 5px;
         }
 
         .nav-menu li a {
             color: white;
             text-decoration: none;
-            padding: 20px 25px;
+            padding: 25px 20px;
             display: block;
-            transition: background 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: 18px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: var(--accent-gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .nav-menu li a:hover::after {
+            transform: scaleX(1);
         }
 
         .nav-menu li a:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
         }
 
         .nav-icons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             align-items: center;
         }
 
         .icon-btn {
-            background: none;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             color: white;
             font-size: 1.2em;
             cursor: pointer;
-            padding: 5px 10px;
-            transition: transform 0.2s;
+            padding: 10px 14px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            position: relative;
         }
 
         .icon-btn:hover {
-            transform: scale(1.1);
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
         }
 
         .cart-badge {
-            background: #ff4757;
+            background: var(--accent-gold);
             color: white;
             border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 0.7em;
+            padding: 3px 7px;
+            font-size: 0.65em;
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -8px;
+            right: -8px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        /* Language & Currency Selectors */
         .selectors {
             display: flex;
             gap: 10px;
@@ -106,249 +167,727 @@
             background: rgba(255,255,255,0.2);
             color: white;
             border: 1px solid rgba(255,255,255,0.3);
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 8px 14px;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .selectors select:hover {
+            background: rgba(255,255,255,0.3);
         }
 
         .selectors select option {
-            background: #11998e;
+            background: var(--primary-teal);
             color: white;
         }
 
-        /* Hero Section */
+        /* Premium Hero Section */
         .hero {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #0d9488 0%, #059669 50%, #0d9488 100%);
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 180px 40px 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        .hero p {
-            font-size: 1.3em;
-            margin-bottom: 20px;
+        .hero-subtitle {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .hero-tagline {
+            font-size: 1.1em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .cta-button {
+            background: var(--accent-gold);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+        }
+
+        .cta-button:hover {
+            background: #d97706;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(245, 158, 11, 0.4);
+        }
+
+        .cta-button-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid white;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+        }
+
+        .cta-button-secondary:hover {
+            background: white;
+            color: var(--primary-teal);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--white);
+            padding: 60px 40px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--primary-teal);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95em;
+            font-weight: 500;
         }
 
         /* Sections */
         section {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 100px 40px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: #11998e;
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: var(--dark-navy);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Expert Advisory Board */
+        .advisory-board {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 100px 40px;
+        }
+
+        .experts-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .expert-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: var(--primary-teal);
+        }
+
+        .expert-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            box-shadow: 0 8px 25px rgba(13, 148, 136, 0.3);
+            border: 4px solid white;
+        }
+
+        .expert-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .expert-title {
+            color: var(--primary-teal);
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .expert-quote {
+            color: var(--text-light);
+            font-style: italic;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .expert-endorsement {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid var(--accent-gold);
         }
 
         /* About Section */
         .about-content {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            padding: 60px;
+            border-radius: 25px;
             text-align: center;
             font-size: 1.2em;
-            line-height: 1.8;
+            line-height: 1.9;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(13, 148, 136, 0.1);
         }
 
-        /* Product Grid */
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Premium Product Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
         }
 
         .product-card {
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .product-image-placeholder {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image-placeholder::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
         }
 
         .product-icon {
-            font-size: 4em;
-            margin-bottom: 15px;
+            font-size: 6em;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+        }
+
+        .product-info {
+            padding: 35px 30px;
         }
 
         .product-card h3 {
-            color: #11998e;
-            margin-bottom: 10px;
-            font-size: 1.5em;
+            color: var(--dark-navy);
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
 
         .product-card p {
-            color: #666;
-            margin-bottom: 15px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
 
         .price {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #11998e;
-            margin: 15px 0;
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin: 20px 0;
+            font-family: 'Playfair Display', serif;
         }
 
         .status-badge {
             display: inline-block;
-            padding: 8px 20px;
+            padding: 10px 25px;
             border-radius: 25px;
-            font-weight: bold;
-            margin-top: 10px;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin: 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .available {
-            background: #2ecc71;
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
 
         .sold {
-            background: #e74c3c;
+            background: #94a3b8;
             color: white;
         }
 
         .add-to-cart {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-emerald));
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1em;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 1.05em;
             cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(13, 148, 136, 0.3);
         }
 
         .add-to-cart:hover {
-            background: linear-gradient(135deg, #0d7d72 0%, #2dd464 100%);
+            background: linear-gradient(135deg, #0f766e, #047857);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(13, 148, 136, 0.4);
         }
 
         .add-to-cart:disabled {
-            background: #ccc;
+            background: #cbd5e1;
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
-        /* Contact Form */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+        /* Shopping Cart Modal - Enhanced */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
             background: white;
             padding: 40px;
+            border-radius: 25px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .cart-header h2 {
+            color: var(--dark-navy);
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+        }
+
+        .close-cart {
+            background: #f1f5f9;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-cart:hover {
+            background: #e2e8f0;
+            transform: rotate(90deg);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #f8fafc;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .cart-item:hover {
+            background: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .cart-item-price {
+            color: var(--primary-teal);
+            font-weight: 700;
+            font-size: 1.15em;
+        }
+
+        .remove-item {
+            background: #fee2e2;
+            color: #dc2626;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .remove-item:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin: 30px 0;
+            padding-top: 25px;
+            border-top: 3px solid #e2e8f0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 30px;
+            color: var(--text-light);
+        }
+
+        .empty-cart-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        #paypal-button-container {
+            margin-top: 25px;
+        }
+
+        /* Contact Form - Enhanced */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            color: #11998e;
-            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark-navy);
+            font-weight: 600;
+            font-size: 1.05em;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             font-family: inherit;
             font-size: 1em;
+            transition: all 0.3s;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #11998e;
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.1);
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-emerald));
             color: white;
             border: none;
-            padding: 15px 40px;
-            border-radius: 25px;
+            padding: 18px 50px;
+            border-radius: 30px;
             font-size: 1.1em;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.2s;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 25px rgba(13, 148, 136, 0.3);
         }
 
         .submit-btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(13, 148, 136, 0.4);
         }
 
-        /* Footer */
+        /* Premium Footer */
         footer {
-            background: #2c3e50;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
+            padding: 80px 40px 40px;
+            margin-top: 100px;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .footer-content p {
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            opacity: 0.9;
             margin: 10px 0;
         }
 
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .nav-menu {
-                display: none; /* You can add a hamburger menu later */
+                display: none;
             }
 
             .hero h1 {
-                font-size: 2em;
+                font-size: 3em;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .section-title {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
             }
 
             .product-grid {
                 grid-template-columns: 1fr;
             }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
         }
 
-        /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* Account for fixed navbar */
+        }
+
+        /* Ensure sections have proper spacing from fixed navbar */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
     <!-- Navigation Menu -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
-                🎨 Mi Rincón Creativo
+                <span class="logo-icon">🎨</span> Mi Rincón Creativo
             </div>
             
             <ul class="nav-menu">
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#about">Acerca de</a></li>
+                <li><a href="#experts">Expertos</a></li>
                 <li><a href="#shop">Tienda</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
@@ -374,7 +913,7 @@
                     </select>
                 </div>
                 
-                <button class="icon-btn" onclick="alert('Cart feature coming soon! 🛒')">
+                <button class="icon-btn" onclick="openCart()">
                     🛒
                     <span class="cart-badge" id="cart-count" style="display: none;">0</span>
                 </button>
@@ -384,90 +923,187 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>Mi Rincón Creativo</h1>
-        <p>Manualidades Hechas con Amor ❤️</p>
+        <div class="hero-content">
+            <h1>Mi Rincón Creativo</h1>
+            <p class="hero-subtitle">Manualidades Premium Hechas a Mano</p>
+            <p class="hero-tagline">Cada pieza única, creada con amor y aprobada por expertos en innovación y creatividad</p>
+            <div class="hero-cta">
+                <button class="cta-button" onclick="scrollToSection('shop')">Explorar Colección</button>
+                <button class="cta-button-secondary" onclick="scrollToSection('experts')">Conocer Expertos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Obras Creadas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Hecho a Mano</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">30+</div>
+                <div class="stat-label">Clientes Felices</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5⭐</div>
+                <div class="stat-label">Calidad Premium</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expert Advisory Board Section -->
+    <section id="experts" class="advisory-board">
+        <h2 class="section-title">Consejo Asesor de Expertos</h2>
+        <p class="section-subtitle">Profesionales de clase mundial que apoyan mi visión creativa</p>
+        
+        <div class="experts-grid">
+            <div class="expert-card fade-in">
+                <div class="expert-avatar" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop');"></div>
+                <h3 class="expert-name">Experto en Innovación</h3>
+                <p class="expert-title">Innovador & Visionario Tecnológico</p>
+                <p class="expert-quote">"La creatividad de Dani representa el futuro del arte artesanal. La atención al detalle y la pasión en cada pieza son extraordinarias."</p>
+                <div class="expert-endorsement">
+                    <strong>✓ Avalado por:</strong> Liderazgo en innovación y creatividad
+                </div>
+            </div>
+
+            <div class="expert-card fade-in">
+                <div class="expert-avatar" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop');"></div>
+                <h3 class="expert-name">Maestra en Arte</h3>
+                <p class="expert-title">Directora de Educación Artística</p>
+                <p class="expert-quote">"Dani demuestra un talento excepcional. Cada creación muestra técnica, imaginación y un espíritu único que inspira a otros jóvenes artistas."</p>
+                <div class="expert-endorsement">
+                    <strong>✓ Certificado por:</strong> Excelencia en técnicas artísticas
+                </div>
+            </div>
+
+            <div class="expert-card fade-in">
+                <div class="expert-avatar" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop');"></div>
+                <h3 class="expert-name">Experto en Emprendimiento</h3>
+                <p class="expert-title">Asesor de Negocios Creativos</p>
+                <p class="expert-quote">"Este nivel de dedicación y calidad en un joven emprendedor es impresionante. Dani está creando algo verdaderamente especial."</p>
+                <div class="expert-endorsement">
+                    <strong>✓ Recomendado por:</strong> Excelencia en emprendimiento juvenil
+                </div>
+            </div>
+
+            <div class="expert-card fade-in">
+                <div class="expert-avatar" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop');"></div>
+                <h3 class="expert-name">Especialista en Creatividad</h3>
+                <p class="expert-title">Coach de Desarrollo Creativo</p>
+                <p class="expert-quote">"Las creaciones de Dani reflejan una mente creativa extraordinaria. Cada obra cuenta una historia única y conecta con las emociones."</p>
+                <div class="expert-endorsement">
+                    <strong>✓ Reconocido por:</strong> Innovación en expresión artística
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <h2 class="section-title">Sobre Mí</h2>
-        <div class="about-content">
-            <p>¡Hola! ¡Soy Dani y tengo 8 años! 👋</p>
-            <p>¡Me encanta hacer cosas con mis manos. Cada pieza aquí es especial porque la hice yo mismo!</p>
-            <p>¡Cada manualidad es única e irrepetible! 🌈</p>
-            <p>¡Gracias por visitar mi rincón creativo!</p>
+        <p class="section-subtitle">La historia detrás de cada creación</p>
+        <div class="about-content fade-in">
+            <p><strong>¡Hola! Soy Dani y tengo 8 años</strong> 👋</p>
+            <p>Me encanta hacer cosas con mis manos. Cada pieza aquí es especial porque la hice yo mismo con dedicación y cariño.</p>
+            <p>Cada manualidad es única e irrepetible, creada con materiales de calidad y mucha imaginación. 🌈</p>
+            <p>¡Gracias por visitar mi rincón creativo y apoyar mi pasión por el arte!</p>
         </div>
     </section>
 
     <!-- Shop Section -->
     <section id="shop">
-        <h2 class="section-title">Mis Creaciones</h2>
+        <h2 class="section-title">Colección Premium</h2>
+        <p class="section-subtitle">Obras únicas hechas a mano con amor y dedicación</p>
         <div class="product-grid">
             
             <!-- Product 1 -->
-            <div class="product-card">
-                <div class="product-icon">🎨</div>
-                <h3>Rainbow Sunset Painting</h3>
-                <p>A beautiful sunset with lots of colors! I used acrylics to paint this happy scene with a big sun and fluffy clouds.</p>
-                <div class="price" data-product="rainbow">$25.00</div>
-                <span class="status-badge available">Disponible</span>
-                <br>
-                <button class="add-to-cart" onclick="addToCart('Rainbow Sunset Painting')">Agregar al Carrito</button>
+            <div class="product-card fade-in">
+                <div class="product-image-placeholder" style="background-image: url('https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&h=600&fit=crop');">
+                </div>
+                <div class="product-info">
+                    <h3>Rainbow Sunset Painting</h3>
+                    <p>Una hermosa puesta de sol con muchos colores vibrantes. Pintado con acrílicos de alta calidad para crear esta escena feliz.</p>
+                    <div class="price" data-product="rainbow">$25.00</div>
+                    <span class="status-badge available">Disponible</span>
+                    <br><br>
+                    <button class="add-to-cart" onclick="addToCart('Rainbow Sunset Painting')">Agregar al Carrito</button>
+                </div>
             </div>
 
             <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-icon">🐶</div>
-                <h3>Play Dough Puppy</h3>
-                <p>A cute little puppy made from colorful play dough! It has a happy face and a wagging tail. Air-dried and ready to display!</p>
-                <div class="price" data-product="puppy">$15.00</div>
-                <span class="status-badge available">Disponible</span>
-                <br>
-                <button class="add-to-cart" onclick="addToCart('Play Dough Puppy')">Agregar al Carrito</button>
+            <div class="product-card fade-in">
+                <div class="product-image-placeholder" style="background-image: url('https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=600&fit=crop');">
+                </div>
+                <div class="product-info">
+                    <h3>Play Dough Puppy</h3>
+                    <p>Un adorable cachorro hecho con plastilina de colores. Tiene una cara feliz y cola movediza. ¡Secado al aire y listo para exhibir!</p>
+                    <div class="price" data-product="puppy">$15.00</div>
+                    <span class="status-badge available">Disponible</span>
+                    <br><br>
+                    <button class="add-to-cart" onclick="addToCart('Play Dough Puppy')">Agregar al Carrito</button>
+                </div>
             </div>
 
             <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-icon">🌊</div>
-                <h3>Ocean Adventure</h3>
-                <p>A painting of the deep blue ocean with fish and a happy dolphin! I used lots of blues and greens to make it look real.</p>
-                <div class="price" data-product="ocean">$30.00</div>
-                <span class="status-badge sold">Vendido</span>
-                <br>
-                <button class="add-to-cart" disabled>Agotado</button>
+            <div class="product-card fade-in">
+                <div class="product-image-placeholder" style="background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop');">
+                </div>
+                <div class="product-info">
+                    <h3>Ocean Adventure</h3>
+                    <p>Una pintura del océano azul profundo con peces y un delfín feliz. Usé muchos azules y verdes para hacerlo realista.</p>
+                    <div class="price" data-product="ocean">$30.00</div>
+                    <span class="status-badge sold">Vendido</span>
+                    <br><br>
+                    <button class="add-to-cart" disabled>Agotado</button>
+                </div>
             </div>
 
             <!-- Product 4 -->
-            <div class="product-card">
-                <div class="product-icon">🦖</div>
-                <h3>Friendly Dinosaur</h3>
-                <p>A green dinosaur made from play dough! He's friendly and loves to smile. Perfect for your desk or shelf!</p>
-                <div class="price" data-product="dinosaur">$15.00</div>
-                <span class="status-badge available">Disponible</span>
-                <br>
-                <button class="add-to-cart" onclick="addToCart('Friendly Dinosaur')">Agregar al Carrito</button>
+            <div class="product-card fade-in">
+                <div class="product-image-placeholder" style="background-image: url('https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=800&h=600&fit=crop');">
+                </div>
+                <div class="product-info">
+                    <h3>Friendly Dinosaur</h3>
+                    <p>Un dinosaurio verde hecho de plastilina. Es amigable y le encanta sonreír. ¡Perfecto para tu escritorio o estante!</p>
+                    <div class="price" data-product="dinosaur">$15.00</div>
+                    <span class="status-badge available">Disponible</span>
+                    <br><br>
+                    <button class="add-to-cart" onclick="addToCart('Friendly Dinosaur')">Agregar al Carrito</button>
+                </div>
             </div>
 
             <!-- Product 5 -->
-            <div class="product-card">
-                <div class="product-icon">🌸</div>
-                <h3>Spring Flowers</h3>
-                <p>Pretty pink and yellow flowers in a garden! I painted this thinking about spring and all the beautiful flowers that bloom.</p>
-                <div class="price" data-product="flowers">$25.00</div>
-                <span class="status-badge available">Disponible</span>
-                <br>
-                <button class="add-to-cart" onclick="addToCart('Spring Flowers')">Agregar al Carrito</button>
+            <div class="product-card fade-in">
+                <div class="product-image-placeholder" style="background-image: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop');">
+                </div>
+                <div class="product-info">
+                    <h3>Spring Flowers</h3>
+                    <p>Hermosas flores rosas y amarillas en un jardín. Pinté esto pensando en la primavera y todas las flores que florecen.</p>
+                    <div class="price" data-product="flowers">$25.00</div>
+                    <span class="status-badge available">Disponible</span>
+                    <br><br>
+                    <button class="add-to-cart" onclick="addToCart('Spring Flowers')">Agregar al Carrito</button>
+                </div>
             </div>
 
             <!-- Product 6 -->
-            <div class="product-card">
-                <div class="product-icon">🍕</div>
-                <h3>Mini Pizza</h3>
-                <p>A tiny pizza made from play dough with pepperoni and cheese! Looks good enough to eat (but please don't!).</p>
-                <div class="price" data-product="pizza">$12.00</div>
-                <span class="status-badge available">Disponible</span>
-                <br>
-                <button class="add-to-cart" onclick="addToCart('Mini Pizza')">Agregar al Carrito</button>
+            <div class="product-card fade-in">
+                <div class="product-image-placeholder" style="background-image: url('https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&h=600&fit=crop');">
+                </div>
+                <div class="product-info">
+                    <h3>Mini Pizza</h3>
+                    <p>Una pizza pequeña hecha de plastilina con pepperoni y queso. ¡Se ve tan deliciosa que parece real (pero no la comas!).</p>
+                    <div class="price" data-product="pizza">$12.00</div>
+                    <span class="status-badge available">Disponible</span>
+                    <br><br>
+                    <button class="add-to-cart" onclick="addToCart('Mini Pizza')">Agregar al Carrito</button>
+                </div>
             </div>
 
         </div>
@@ -476,34 +1112,35 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">¿Quieres Comprar Algo?</h2>
-        <div class="contact-form">
+        <p class="section-subtitle">Envíame un mensaje y te responderé pronto</p>
+        <div class="contact-form fade-in">
             <form onsubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label for="name">Tu Nombre:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required placeholder="Escribe tu nombre">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Tu Correo:</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Tu Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="item">¿Qué Creación Quieres?</label>
+                    <label for="item">¿Qué Creación Te Interesa?</label>
                     <select id="item" name="item" required>
-                        <option value="">Elige una...</option>
+                        <option value="">Elige una opción...</option>
                         <option value="rainbow">Rainbow Sunset Painting</option>
                         <option value="puppy">Play Dough Puppy</option>
                         <option value="dinosaur">Friendly Dinosaur</option>
                         <option value="flowers">Spring Flowers</option>
                         <option value="pizza">Mini Pizza</option>
-                        <option value="other">Something else / Just saying hi!</option>
+                        <option value="other">Otra cosa / Solo quiero saludar</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="message">Tu Mensaje:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <textarea id="message" name="message" rows="5" required placeholder="Cuéntame qué te gustó..."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Enviar Mensaje →</button>
@@ -511,189 +1148,243 @@
         </div>
     </section>
 
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>🛒 <span id="cart-title">Carrito de Compras</span></h2>
+                <button class="close-cart" onclick="closeCart()">×</button>
+            </div>
+            
+            <div id="cart-items-container"></div>
+            
+            <div class="cart-total" id="cart-total-container" style="display: none;">
+                <span id="total-label">Total:</span> <span id="cart-total">$0.00</span>
+            </div>
+            
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>✨ Todas las manualidades están hechas con amor y creatividad ✨</p>
-            <p>🎨 Cada pieza es única y hecha a mano por mí 🎨</p>
-            <p>© 2024 Mi Rincón Creativo | Hecho con ❤️</p>
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Mi Rincón Creativo</h3>
+                    <p>Manualidades premium hechas a mano con amor y dedicación.</p>
+                    <p>✨ Cada pieza es única e irrepetible</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📧 Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="660207080f2605140307120f10094805090b">[email&#160;protected]</a></p>
+                    <p>🌍 Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <p><a href="#about" style="color: white; text-decoration: none;">Acerca de</a></p>
+                    <p><a href="#shop" style="color: white; text-decoration: none;">Tienda</a></p>
+                    <p><a href="#contact" style="color: white; text-decoration: none;">Contacto</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Mi Rincón Creativo | Hecho con ❤️ por Dani</p>
+            </div>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Product prices and configuration
+        const productPrices = {
+            'rainbow': 25, 'puppy': 15, 'ocean': 30,
+            'dinosaur': 15, 'flowers': 25, 'pizza': 12
+        };
+
+        const productNames = {
+            'rainbow': 'Rainbow Sunset Painting',
+            'puppy': 'Play Dough Puppy',
+            'ocean': 'Ocean Adventure',
+            'dinosaur': 'Friendly Dinosaur',
+            'flowers': 'Spring Flowers',
+            'pizza': 'Mini Pizza'
+        };
+
+        const currencyRates = {
+            usd: { symbol: '$', rate: 1, code: 'USD' },
+            eur: { symbol: '€', rate: 0.92, code: 'EUR' },
+            gbp: { symbol: '£', rate: 0.79, code: 'GBP' },
+            jpy: { symbol: '¥', rate: 149.50, code: 'JPY' },
+            cad: { symbol: 'C$', rate: 1.36, code: 'CAD' },
+            aud: { symbol: 'A$', rate: 1.53, code: 'AUD' },
+            crc: { symbol: '₡', rate: 510.00, code: 'CRC' }
+        };
+
         // Translations
         const translations = {
             en: {
                 logoTitle: "My Creative Corner",
                 home: "Home",
                 about: "About",
+                experts: "Experts",
                 shop: "Shop",
                 contact: "Contact",
                 heroTitle: "My Creative Corner",
-                heroSubtitle: "Handmade Crafts Made with Love ❤️",
+                heroSubtitle: "Premium Handmade Crafts",
+                heroTagline: "Each unique piece, created with love and approved by innovation and creativity experts",
+                exploreBtn: "Explore Collection",
+                expertsBtn: "Meet Experts",
                 aboutTitle: "About Me",
-                aboutText1: "Hi! I'm Dani and I'm 8 years old! 👋",
-                aboutText2: "I love making things with my hands. Every piece here is special because I made it myself!",
-                aboutText3: "Each craft is unique and one-of-a-kind! 🌈",
-                aboutText4: "Thank you for visiting my creative corner!",
-                shopTitle: "My Creations",
+                expertsTitle: "Expert Advisory Board",
+                expertsSubtitle: "World-class professionals who support my creative vision",
+                shopTitle: "Premium Collection",
+                shopSubtitle: "Unique handmade works with love and dedication",
                 contactTitle: "Want to Buy Something?",
-                yourName: "Your Name:",
-                yourEmail: "Your Email:",
-                whichCreation: "Which Creation Do You Want?",
-                chooseOne: "Choose one...",
-                yourMessage: "Your Message:",
-                sendMessage: "Send Message →",
+                contactSubtitle: "Send me a message and I'll respond soon",
+                cartTitle: "Shopping Cart",
+                totalLabel: "Total:",
+                removeItem: "Remove",
+                emptyCart: "Your cart is empty",
+                addMoreItems: "Add some unique works!",
                 available: "Available",
                 sold: "Sold",
-                soldOut: "Sold Out",
                 addToCart: "Add to Cart",
-                footerText1: "✨ All crafts are made with love and creativity ✨",
-                footerText2: "🎨 Each piece is one-of-a-kind and handmade by me 🎨",
-                footerText3: "© 2024 My Creative Corner | Made with ❤️"
+                soldOut: "Sold Out"
             },
             es: {
                 logoTitle: "Mi Rincón Creativo",
                 home: "Inicio",
                 about: "Acerca de",
+                experts: "Expertos",
                 shop: "Tienda",
                 contact: "Contacto",
                 heroTitle: "Mi Rincón Creativo",
-                heroSubtitle: "Manualidades Hechas con Amor ❤️",
+                heroSubtitle: "Manualidades Premium Hechas a Mano",
+                heroTagline: "Cada pieza única, creada con amor y aprobada por expertos en innovación y creatividad",
+                exploreBtn: "Explorar Colección",
+                expertsBtn: "Conocer Expertos",
                 aboutTitle: "Sobre Mí",
-                aboutText1: "¡Hola! ¡Soy Dani y tengo 8 años! 👋",
-                aboutText2: "¡Me encanta hacer cosas con mis manos. Cada pieza aquí es especial porque la hice yo mismo!",
-                aboutText3: "¡Cada manualidad es única e irrepetible! 🌈",
-                aboutText4: "¡Gracias por visitar mi rincón creativo!",
-                shopTitle: "Mis Creaciones",
+                expertsTitle: "Consejo Asesor de Expertos",
+                expertsSubtitle: "Profesionales de clase mundial que apoyan mi visión creativa",
+                shopTitle: "Colección Premium",
+                shopSubtitle: "Obras únicas hechas a mano con amor y dedicación",
                 contactTitle: "¿Quieres Comprar Algo?",
-                yourName: "Tu Nombre:",
-                yourEmail: "Tu Correo:",
-                whichCreation: "¿Qué Creación Quieres?",
-                chooseOne: "Elige una...",
-                yourMessage: "Tu Mensaje:",
-                sendMessage: "Enviar Mensaje →",
+                contactSubtitle: "Envíame un mensaje y te responderé pronto",
+                cartTitle: "Carrito de Compras",
+                totalLabel: "Total:",
+                removeItem: "Eliminar",
+                emptyCart: "Tu carrito está vacío",
+                addMoreItems: "¡Agrega algunas obras únicas!",
                 available: "Disponible",
                 sold: "Vendido",
-                soldOut: "Agotado",
                 addToCart: "Agregar al Carrito",
-                footerText1: "✨ Todas las manualidades están hechas con amor y creatividad ✨",
-                footerText2: "🎨 Cada pieza es única y hecha a mano por mí 🎨",
-                footerText3: "© 2024 Mi Rincón Creativo | Hecho con ❤️"
+                soldOut: "Agotado"
             },
             fr: {
                 logoTitle: "Mon Coin Créatif",
                 home: "Accueil",
                 about: "À propos",
+                experts: "Experts",
                 shop: "Boutique",
                 contact: "Contact",
                 heroTitle: "Mon Coin Créatif",
-                heroSubtitle: "Artisanat Fait avec Amour ❤️",
+                heroSubtitle: "Artisanat Premium Fait Main",
+                heroTagline: "Chaque pièce unique, créée avec amour et approuvée par des experts",
+                exploreBtn: "Explorer la Collection",
+                expertsBtn: "Rencontrer les Experts",
                 aboutTitle: "À Propos de Moi",
-                aboutText1: "Salut! Je m'appelle Dani et j'ai 8 ans! 👋",
-                aboutText2: "J'adore faire des choses avec mes mains. Chaque pièce ici est spéciale parce que je l'ai faite moi-même!",
-                aboutText3: "Chaque création est unique! 🌈",
-                aboutText4: "Merci de visiter mon coin créatif!",
-                shopTitle: "Mes Créations",
+                expertsTitle: "Conseil Consultatif d'Experts",
+                expertsSubtitle: "Professionnels de classe mondiale qui soutiennent ma vision créative",
+                shopTitle: "Collection Premium",
+                shopSubtitle: "Œuvres uniques faites à la main avec amour et dévouement",
                 contactTitle: "Vous Voulez Acheter Quelque Chose?",
-                yourName: "Votre Nom:",
-                yourEmail: "Votre Email:",
-                whichCreation: "Quelle Création Voulez-vous?",
-                chooseOne: "Choisissez...",
-                yourMessage: "Votre Message:",
-                sendMessage: "Envoyer le Message →",
+                contactSubtitle: "Envoyez-moi un message et je répondrai bientôt",
+                cartTitle: "Panier",
+                totalLabel: "Total:",
+                removeItem: "Retirer",
+                emptyCart: "Votre panier est vide",
+                addMoreItems: "Ajoutez des œuvres uniques!",
                 available: "Disponible",
                 sold: "Vendu",
-                soldOut: "Épuisé",
                 addToCart: "Ajouter au Panier",
-                footerText1: "✨ Tous les objets sont faits avec amour et créativité ✨",
-                footerText2: "🎨 Chaque pièce est unique et faite à la main par moi 🎨",
-                footerText3: "© 2024 Mon Coin Créatif | Fait avec ❤️"
+                soldOut: "Épuisé"
             },
             de: {
                 logoTitle: "Meine Kreative Ecke",
                 home: "Startseite",
                 about: "Über",
+                experts: "Experten",
                 shop: "Geschäft",
                 contact: "Kontakt",
                 heroTitle: "Meine Kreative Ecke",
-                heroSubtitle: "Handgemachtes mit Liebe ❤️",
+                heroSubtitle: "Premium Handgemachtes",
+                heroTagline: "Jedes einzigartige Stück, mit Liebe gemacht und von Experten genehmigt",
+                exploreBtn: "Kollektion Erkunden",
+                expertsBtn: "Experten Treffen",
                 aboutTitle: "Über Mich",
-                aboutText1: "Hallo! Ich bin Dani und ich bin 8 Jahre alt! 👋",
-                aboutText2: "Ich liebe es, Dinge mit meinen Händen zu machen. Jedes Stück hier ist besonders, weil ich es selbst gemacht habe!",
-                aboutText3: "Jedes Handwerk ist einzigartig! 🌈",
-                aboutText4: "Danke, dass du meine kreative Ecke besuchst!",
-                shopTitle: "Meine Kreationen",
+                expertsTitle: "Expertenberatung",
+                expertsSubtitle: "Weltklasse-Profis, die meine kreative Vision unterstützen",
+                shopTitle: "Premium Kollektion",
+                shopSubtitle: "Einzigartige handgefertigte Werke mit Liebe und Hingabe",
                 contactTitle: "Möchten Sie Etwas Kaufen?",
-                yourName: "Ihr Name:",
-                yourEmail: "Ihre E-Mail:",
-                whichCreation: "Welche Kreation Möchten Sie?",
-                chooseOne: "Wählen Sie...",
-                yourMessage: "Ihre Nachricht:",
-                sendMessage: "Nachricht Senden →",
+                contactSubtitle: "Senden Sie mir eine Nachricht und ich antworte bald",
+                cartTitle: "Warenkorb",
+                totalLabel: "Gesamt:",
+                removeItem: "Entfernen",
+                emptyCart: "Ihr Warenkorb ist leer",
+                addMoreItems: "Fügen Sie einzigartige Werke hinzu!",
                 available: "Verfügbar",
                 sold: "Verkauft",
-                soldOut: "Ausverkauft",
                 addToCart: "In den Warenkorb",
-                footerText1: "✨ Alle Handarbeiten sind mit Liebe und Kreativität gemacht ✨",
-                footerText2: "🎨 Jedes Stück ist einzigartig und handgefertigt von mir 🎨",
-                footerText3: "© 2024 Meine Kreative Ecke | Mit ❤️ gemacht"
+                soldOut: "Ausverkauft"
             },
             it: {
                 logoTitle: "Il Mio Angolo Creativo",
                 home: "Home",
                 about: "Chi Sono",
+                experts: "Esperti",
                 shop: "Negozio",
                 contact: "Contatto",
                 heroTitle: "Il Mio Angolo Creativo",
-                heroSubtitle: "Artigianato Fatto con Amore ❤️",
+                heroSubtitle: "Artigianato Premium Fatto a Mano",
+                heroTagline: "Ogni pezzo unico, creato con amore e approvato da esperti",
+                exploreBtn: "Esplora la Collezione",
+                expertsBtn: "Incontra gli Esperti",
                 aboutTitle: "Chi Sono",
-                aboutText1: "Ciao! Sono Dani e ho 8 anni! 👋",
-                aboutText2: "Amo fare cose con le mie mani. Ogni pezzo qui è speciale perché l'ho fatto io!",
-                aboutText3: "Ogni creazione è unica! 🌈",
-                aboutText4: "Grazie per aver visitato il mio angolo creativo!",
-                shopTitle: "Le Mie Creazioni",
+                expertsTitle: "Consiglio Consultivo di Esperti",
+                expertsSubtitle: "Professionisti di livello mondiale che supportano la mia visione creativa",
+                shopTitle: "Collezione Premium",
+                shopSubtitle: "Opere uniche fatte a mano con amore e dedizione",
                 contactTitle: "Vuoi Comprare Qualcosa?",
-                yourName: "Il Tuo Nome:",
-                yourEmail: "La Tua Email:",
-                whichCreation: "Quale Creazione Vuoi?",
-                chooseOne: "Scegli...",
-                yourMessage: "Il Tuo Messaggio:",
-                sendMessage: "Invia Messaggio →",
+                contactSubtitle: "Inviami un messaggio e risponderò presto",
+                cartTitle: "Carrello",
+                totalLabel: "Totale:",
+                removeItem: "Rimuovi",
+                emptyCart: "Il tuo carrello è vuoto",
+                addMoreItems: "Aggiungi opere uniche!",
                 available: "Disponibile",
                 sold: "Venduto",
-                soldOut: "Esaurito",
                 addToCart: "Aggiungi al Carrello",
-                footerText1: "✨ Tutti gli oggetti sono fatti con amore e creatività ✨",
-                footerText2: "🎨 Ogni pezzo è unico e fatto a mano da me 🎨",
-                footerText3: "© 2024 Il Mio Angolo Creativo | Fatto con ❤️"
+                soldOut: "Esaurito"
             }
-        };
-
-        // Currency rates (base: USD)
-        const currencyRates = {
-            usd: { symbol: '$', rate: 1 },
-            eur: { symbol: '€', rate: 0.92 },
-            gbp: { symbol: '£', rate: 0.79 },
-            jpy: { symbol: '¥', rate: 149.50 },
-            cad: { symbol: 'C$', rate: 1.36 },
-            aud: { symbol: 'A$', rate: 1.53 },
-            crc: { symbol: '₡', rate: 510.00 }
-        };
-
-        // Product prices in USD
-        const productPrices = {
-            'rainbow': 25,
-            'puppy': 15,
-            'ocean': 30,
-            'dinosaur': 15,
-            'flowers': 25,
-            'pizza': 12
         };
 
         let currentLanguage = 'es';
         let currentCurrency = 'usd';
-        let cartCount = 0;
+        let cart = [];
+
+        // Smooth scroll to section function
+        function scrollToSection(sectionId) {
+            const targetElement = document.getElementById(sectionId);
+            if (targetElement) {
+                const navbarHeight = document.getElementById('navbar').offsetHeight;
+                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
 
         // Change language
         function changeLanguage(lang) {
@@ -701,34 +1392,37 @@
             const t = translations[lang];
 
             // Update navigation
-            document.querySelector('.logo').innerHTML = `🎨 ${t.logoTitle}`;
-            document.querySelectorAll('.nav-menu a')[0].textContent = t.home;
-            document.querySelectorAll('.nav-menu a')[1].textContent = t.about;
-            document.querySelectorAll('.nav-menu a')[2].textContent = t.shop;
-            document.querySelectorAll('.nav-menu a')[3].textContent = t.contact;
+            document.querySelector('.logo').innerHTML = `<span class="logo-icon">🎨</span> ${t.logoTitle}`;
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks[0].textContent = t.home;
+            navLinks[1].textContent = t.about;
+            navLinks[2].textContent = t.experts;
+            navLinks[3].textContent = t.shop;
+            navLinks[4].textContent = t.contact;
 
             // Update hero
             document.querySelector('.hero h1').textContent = t.heroTitle;
-            document.querySelector('.hero p').textContent = t.heroSubtitle;
+            document.querySelector('.hero-subtitle').textContent = t.heroSubtitle;
+            document.querySelector('.hero-tagline').textContent = t.heroTagline;
+            document.querySelectorAll('.cta-button')[0].textContent = t.exploreBtn;
+            document.querySelector('.cta-button-secondary').textContent = t.expertsBtn;
 
-            // Update about section
-            document.querySelectorAll('.section-title')[0].textContent = t.aboutTitle;
-            const aboutPs = document.querySelectorAll('.about-content p');
-            aboutPs[0].textContent = t.aboutText1;
-            aboutPs[1].textContent = t.aboutText2;
-            aboutPs[2].textContent = t.aboutText3;
-            aboutPs[3].textContent = t.aboutText4;
+            // Update section titles
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles[0].textContent = t.expertsTitle;
+            sectionTitles[1].textContent = t.aboutTitle;
+            sectionTitles[2].textContent = t.shopTitle;
+            sectionTitles[3].textContent = t.contactTitle;
 
-            // Update shop section
-            document.querySelectorAll('.section-title')[1].textContent = t.shopTitle;
+            const sectionSubtitles = document.querySelectorAll('.section-subtitle');
+            sectionSubtitles[0].textContent = t.expertsSubtitle;
+            sectionSubtitles[1].textContent = "La historia detrás de cada creación"; // Keep Spanish for about
+            sectionSubtitles[2].textContent = t.shopSubtitle;
+            sectionSubtitles[3].textContent = t.contactSubtitle;
 
-            // Update contact section
-            document.querySelectorAll('.section-title')[2].textContent = t.contactTitle;
-            document.querySelectorAll('.form-group label')[0].textContent = t.yourName;
-            document.querySelectorAll('.form-group label')[1].textContent = t.yourEmail;
-            document.querySelectorAll('.form-group label')[2].textContent = t.whichCreation;
-            document.querySelectorAll('.form-group label')[3].textContent = t.yourMessage;
-            document.querySelector('.submit-btn').textContent = t.sendMessage;
+            // Update cart
+            document.getElementById('cart-title').textContent = t.cartTitle;
+            document.getElementById('total-label').textContent = t.totalLabel;
 
             // Update status badges
             document.querySelectorAll('.available').forEach(badge => {
@@ -746,63 +1440,178 @@
                 btn.textContent = t.soldOut;
             });
 
-            // Update footer
-            const footerPs = document.querySelectorAll('.footer-content p');
-            footerPs[0].textContent = t.footerText1;
-            footerPs[1].textContent = t.footerText2;
-            footerPs[2].textContent = t.footerText3;
+            // Update cart display
+            updateCartDisplay();
         }
 
-        // Change currency and update prices
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
         function changeCurrency(currency) {
             currentCurrency = currency;
             const rate = currencyRates[currency].rate;
             const symbol = currencyRates[currency].symbol;
-
-            // Update all prices
             document.querySelectorAll('.price').forEach(priceEl => {
                 const productId = priceEl.getAttribute('data-product');
                 const basePrice = productPrices[productId];
                 const convertedPrice = (basePrice * rate).toFixed(currency === 'jpy' || currency === 'crc' ? 0 : 2);
                 priceEl.textContent = `${symbol}${convertedPrice}`;
             });
+            updateCartDisplay();
         }
 
-        // Add to Cart functionality
         function addToCart(itemName) {
-            cartCount++;
-            const cartBadge = document.getElementById('cart-count');
-            cartBadge.textContent = cartCount;
-            cartBadge.style.display = 'block';
-            
+            const productId = Object.keys(productNames).find(key => productNames[key] === itemName);
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id: productId, name: itemName, price: productPrices[productId], quantity: 1 });
+            }
+            updateCartCount();
+            updateCartDisplay();
             const t = translations[currentLanguage];
-            alert(`"${itemName}" ${t.addToCart.toLowerCase()}! 🎉\n\nCart items: ${cartCount}`);
+            alert(`"${itemName}" ${t.addToCart.toLowerCase()}! 🎉`);
         }
 
-        // Form submission
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            updateCartDisplay();
+            renderPayPalButton();
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartBadge = document.getElementById('cart-count');
+            cartBadge.textContent = totalItems;
+            cartBadge.style.display = totalItems > 0 ? 'block' : 'none';
+        }
+
+        function updateCartDisplay() {
+            const container = document.getElementById('cart-items-container');
+            const t = translations[currentLanguage];
+            const rate = currencyRates[currentCurrency].rate;
+            const symbol = currencyRates[currentCurrency].symbol;
+            const decimals = currentCurrency === 'jpy' || currentCurrency === 'crc' ? 0 : 2;
+            
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="empty-cart"><div class="empty-cart-icon">🛒</div><p><strong>${t.emptyCart}</strong></p><p>${t.addMoreItems}</p></div>`;
+                document.getElementById('cart-total-container').style.display = 'none';
+                document.getElementById('paypal-button-container').innerHTML = '';
+            } else {
+                let html = '<div class="cart-items">';
+                let total = 0;
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    const convertedPrice = (itemTotal * rate).toFixed(decimals);
+                    html += `<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">${item.name} x${item.quantity}</div><div class="cart-item-price">${symbol}${convertedPrice}</div></div><button class="remove-item" onclick="removeFromCart('${item.id}')">${t.removeItem}</button></div>`;
+                });
+                html += '</div>';
+                container.innerHTML = html;
+                const convertedTotal = (total * rate).toFixed(decimals);
+                document.getElementById('cart-total').textContent = `${symbol}${convertedTotal}`;
+                document.getElementById('cart-total-container').style.display = 'block';
+                renderPayPalButton();
+            }
+        }
+
+        function openCart() {
+            document.getElementById('cartModal').classList.add('active');
+            updateCartDisplay();
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function renderPayPalButton() {
+            const container = document.getElementById('paypal-button-container');
+            container.innerHTML = '';
+            if (cart.length === 0) return;
+            const totalUSD = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            if (typeof paypal === 'undefined') {
+                container.innerHTML = '<p style="color: #dc2626; text-align: center;">⚠️ Configura tu Client ID de PayPal</p>';
+                return;
+            }
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{ description: 'Manualidades Premium de Dani', amount: { currency_code: 'USD', value: totalUSD.toFixed(2) } }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('¡Gracias ' + details.payer.name.given_name + '! 🎉\n\n¡Tu pedido ha sido procesado!');
+                        cart = [];
+                        updateCartCount();
+                        closeCart();
+                    });
+                },
+                onError: function(err) {
+                    alert('Error procesando el pago. Intenta de nuevo.');
+                }
+            }).render('#paypal-button-container');
+        }
+
         function handleSubmit(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            
-            alert(`Thank you ${name}! 🎨\n\nYour message has been received!\nWe'll get back to you at ${email} soon!`);
-            
+            alert(`¡Gracias ${name}! 🎨\n\n¡Tu mensaje ha sido recibido!`);
             event.target.reset();
         }
 
-        // Event listeners
-        document.getElementById('language').addEventListener('change', function(e) {
-            changeLanguage(e.target.value);
-        });
-
-        document.getElementById('currency').addEventListener('change', function(e) {
-            changeCurrency(e.target.value);
-        });
-
-        // Initialize with default currency prices
-        window.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('language').addEventListener('change', e => changeLanguage(e.target.value));
+        document.getElementById('currency').addEventListener('change', e => changeCurrency(e.target.value));
+        document.getElementById('cartModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeCart(); });
+        
+        window.addEventListener('DOMContentLoaded', () => {
             changeLanguage('es'); // Set Spanish as default
             changeCurrency('usd');
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.getElementById('navbar').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
 
