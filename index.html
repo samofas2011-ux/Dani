@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Creative Corner - Handmade Crafts</title>
+    <title>Mi Rincón Creativo - Manualidades Hechas a Mano</title>
     <style>
         * {
             margin: 0;
@@ -197,6 +197,13 @@
             margin-bottom: 15px;
         }
 
+        .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #11998e;
+            margin: 15px 0;
+        }
+
         .status-badge {
             display: inline-block;
             padding: 8px 20px;
@@ -336,21 +343,21 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                🎨 My Creative Corner
+                🎨 Mi Rincón Creativo
             </div>
             
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Acerca de</a></li>
+                <li><a href="#shop">Tienda</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
 
             <div class="nav-icons">
                 <div class="selectors">
                     <select id="language">
                         <option value="en">🌍 EN</option>
-                        <option value="es">ES</option>
+                        <option value="es" selected>ES</option>
                         <option value="fr">FR</option>
                         <option value="de">DE</option>
                         <option value="it">IT</option>
@@ -377,24 +384,24 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>My Creative Corner</h1>
-        <p>Handmade Crafts Made with Love ❤️</p>
+        <h1>Mi Rincón Creativo</h1>
+        <p>Manualidades Hechas con Amor ❤️</p>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title">Sobre Mí</h2>
         <div class="about-content">
-            <p>Hi! I'm Dani and I'm 8 years old! 👋</p>
-            <p>I love making things with my hands. Every piece here is special because I made it myself!</p>
-            <p>Each craft is unique and one-of-a-kind! 🌈</p>
-            <p>Thank you for visiting my creative corner!</p>
+            <p>¡Hola! ¡Soy Dani y tengo 8 años! 👋</p>
+            <p>¡Me encanta hacer cosas con mis manos. Cada pieza aquí es especial porque la hice yo mismo!</p>
+            <p>¡Cada manualidad es única e irrepetible! 🌈</p>
+            <p>¡Gracias por visitar mi rincón creativo!</p>
         </div>
     </section>
 
     <!-- Shop Section -->
     <section id="shop">
-        <h2 class="section-title">My Creations</h2>
+        <h2 class="section-title">Mis Creaciones</h2>
         <div class="product-grid">
             
             <!-- Product 1 -->
@@ -402,9 +409,10 @@
                 <div class="product-icon">🎨</div>
                 <h3>Rainbow Sunset Painting</h3>
                 <p>A beautiful sunset with lots of colors! I used acrylics to paint this happy scene with a big sun and fluffy clouds.</p>
-                <span class="status-badge available">Available</span>
+                <div class="price" data-product="rainbow">$25.00</div>
+                <span class="status-badge available">Disponible</span>
                 <br>
-                <button class="add-to-cart" onclick="addToCart('Rainbow Sunset Painting')">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('Rainbow Sunset Painting')">Agregar al Carrito</button>
             </div>
 
             <!-- Product 2 -->
@@ -412,9 +420,10 @@
                 <div class="product-icon">🐶</div>
                 <h3>Play Dough Puppy</h3>
                 <p>A cute little puppy made from colorful play dough! It has a happy face and a wagging tail. Air-dried and ready to display!</p>
-                <span class="status-badge available">Available</span>
+                <div class="price" data-product="puppy">$15.00</div>
+                <span class="status-badge available">Disponible</span>
                 <br>
-                <button class="add-to-cart" onclick="addToCart('Play Dough Puppy')">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('Play Dough Puppy')">Agregar al Carrito</button>
             </div>
 
             <!-- Product 3 -->
@@ -422,9 +431,10 @@
                 <div class="product-icon">🌊</div>
                 <h3>Ocean Adventure</h3>
                 <p>A painting of the deep blue ocean with fish and a happy dolphin! I used lots of blues and greens to make it look real.</p>
-                <span class="status-badge sold">Sold</span>
+                <div class="price" data-product="ocean">$30.00</div>
+                <span class="status-badge sold">Vendido</span>
                 <br>
-                <button class="add-to-cart" disabled>Sold Out</button>
+                <button class="add-to-cart" disabled>Agotado</button>
             </div>
 
             <!-- Product 4 -->
@@ -432,9 +442,10 @@
                 <div class="product-icon">🦖</div>
                 <h3>Friendly Dinosaur</h3>
                 <p>A green dinosaur made from play dough! He's friendly and loves to smile. Perfect for your desk or shelf!</p>
-                <span class="status-badge available">Available</span>
+                <div class="price" data-product="dinosaur">$15.00</div>
+                <span class="status-badge available">Disponible</span>
                 <br>
-                <button class="add-to-cart" onclick="addToCart('Friendly Dinosaur')">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('Friendly Dinosaur')">Agregar al Carrito</button>
             </div>
 
             <!-- Product 5 -->
@@ -442,9 +453,10 @@
                 <div class="product-icon">🌸</div>
                 <h3>Spring Flowers</h3>
                 <p>Pretty pink and yellow flowers in a garden! I painted this thinking about spring and all the beautiful flowers that bloom.</p>
-                <span class="status-badge available">Available</span>
+                <div class="price" data-product="flowers">$25.00</div>
+                <span class="status-badge available">Disponible</span>
                 <br>
-                <button class="add-to-cart" onclick="addToCart('Spring Flowers')">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('Spring Flowers')">Agregar al Carrito</button>
             </div>
 
             <!-- Product 6 -->
@@ -452,9 +464,10 @@
                 <div class="product-icon">🍕</div>
                 <h3>Mini Pizza</h3>
                 <p>A tiny pizza made from play dough with pepperoni and cheese! Looks good enough to eat (but please don't!).</p>
-                <span class="status-badge available">Available</span>
+                <div class="price" data-product="pizza">$12.00</div>
+                <span class="status-badge available">Disponible</span>
                 <br>
-                <button class="add-to-cart" onclick="addToCart('Mini Pizza')">Add to Cart</button>
+                <button class="add-to-cart" onclick="addToCart('Mini Pizza')">Agregar al Carrito</button>
             </div>
 
         </div>
@@ -462,23 +475,23 @@
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2 class="section-title">Want to Buy Something?</h2>
+        <h2 class="section-title">¿Quieres Comprar Algo?</h2>
         <div class="contact-form">
             <form onsubmit="handleSubmit(event)">
                 <div class="form-group">
-                    <label for="name">Your Name:</label>
+                    <label for="name">Tu Nombre:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Your Email:</label>
+                    <label for="email">Tu Correo:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="item">Which Creation Do You Want?</label>
+                    <label for="item">¿Qué Creación Quieres?</label>
                     <select id="item" name="item" required>
-                        <option value="">Choose one...</option>
+                        <option value="">Elige una...</option>
                         <option value="rainbow">Rainbow Sunset Painting</option>
                         <option value="puppy">Play Dough Puppy</option>
                         <option value="dinosaur">Friendly Dinosaur</option>
@@ -489,11 +502,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Your Message:</label>
+                    <label for="message">Tu Mensaje:</label>
                     <textarea id="message" name="message" rows="4" required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Send Message →</button>
+                <button type="submit" class="submit-btn">Enviar Mensaje →</button>
             </form>
         </div>
     </section>
@@ -501,22 +514,269 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>✨ All crafts are made with love and creativity ✨</p>
-            <p>🎨 Each piece is one-of-a-kind and handmade by me 🎨</p>
-            <p>© 2024 My Creative Corner | Made with ❤️</p>
+            <p>✨ Todas las manualidades están hechas con amor y creatividad ✨</p>
+            <p>🎨 Cada pieza es única y hecha a mano por mí 🎨</p>
+            <p>© 2024 Mi Rincón Creativo | Hecho con ❤️</p>
         </div>
     </footer>
 
     <script>
-        // Add to Cart functionality
+        // Translations
+        const translations = {
+            en: {
+                logoTitle: "My Creative Corner",
+                home: "Home",
+                about: "About",
+                shop: "Shop",
+                contact: "Contact",
+                heroTitle: "My Creative Corner",
+                heroSubtitle: "Handmade Crafts Made with Love ❤️",
+                aboutTitle: "About Me",
+                aboutText1: "Hi! I'm Dani and I'm 8 years old! 👋",
+                aboutText2: "I love making things with my hands. Every piece here is special because I made it myself!",
+                aboutText3: "Each craft is unique and one-of-a-kind! 🌈",
+                aboutText4: "Thank you for visiting my creative corner!",
+                shopTitle: "My Creations",
+                contactTitle: "Want to Buy Something?",
+                yourName: "Your Name:",
+                yourEmail: "Your Email:",
+                whichCreation: "Which Creation Do You Want?",
+                chooseOne: "Choose one...",
+                yourMessage: "Your Message:",
+                sendMessage: "Send Message →",
+                available: "Available",
+                sold: "Sold",
+                soldOut: "Sold Out",
+                addToCart: "Add to Cart",
+                footerText1: "✨ All crafts are made with love and creativity ✨",
+                footerText2: "🎨 Each piece is one-of-a-kind and handmade by me 🎨",
+                footerText3: "© 2024 My Creative Corner | Made with ❤️"
+            },
+            es: {
+                logoTitle: "Mi Rincón Creativo",
+                home: "Inicio",
+                about: "Acerca de",
+                shop: "Tienda",
+                contact: "Contacto",
+                heroTitle: "Mi Rincón Creativo",
+                heroSubtitle: "Manualidades Hechas con Amor ❤️",
+                aboutTitle: "Sobre Mí",
+                aboutText1: "¡Hola! ¡Soy Dani y tengo 8 años! 👋",
+                aboutText2: "¡Me encanta hacer cosas con mis manos. Cada pieza aquí es especial porque la hice yo mismo!",
+                aboutText3: "¡Cada manualidad es única e irrepetible! 🌈",
+                aboutText4: "¡Gracias por visitar mi rincón creativo!",
+                shopTitle: "Mis Creaciones",
+                contactTitle: "¿Quieres Comprar Algo?",
+                yourName: "Tu Nombre:",
+                yourEmail: "Tu Correo:",
+                whichCreation: "¿Qué Creación Quieres?",
+                chooseOne: "Elige una...",
+                yourMessage: "Tu Mensaje:",
+                sendMessage: "Enviar Mensaje →",
+                available: "Disponible",
+                sold: "Vendido",
+                soldOut: "Agotado",
+                addToCart: "Agregar al Carrito",
+                footerText1: "✨ Todas las manualidades están hechas con amor y creatividad ✨",
+                footerText2: "🎨 Cada pieza es única y hecha a mano por mí 🎨",
+                footerText3: "© 2024 Mi Rincón Creativo | Hecho con ❤️"
+            },
+            fr: {
+                logoTitle: "Mon Coin Créatif",
+                home: "Accueil",
+                about: "À propos",
+                shop: "Boutique",
+                contact: "Contact",
+                heroTitle: "Mon Coin Créatif",
+                heroSubtitle: "Artisanat Fait avec Amour ❤️",
+                aboutTitle: "À Propos de Moi",
+                aboutText1: "Salut! Je m'appelle Dani et j'ai 8 ans! 👋",
+                aboutText2: "J'adore faire des choses avec mes mains. Chaque pièce ici est spéciale parce que je l'ai faite moi-même!",
+                aboutText3: "Chaque création est unique! 🌈",
+                aboutText4: "Merci de visiter mon coin créatif!",
+                shopTitle: "Mes Créations",
+                contactTitle: "Vous Voulez Acheter Quelque Chose?",
+                yourName: "Votre Nom:",
+                yourEmail: "Votre Email:",
+                whichCreation: "Quelle Création Voulez-vous?",
+                chooseOne: "Choisissez...",
+                yourMessage: "Votre Message:",
+                sendMessage: "Envoyer le Message →",
+                available: "Disponible",
+                sold: "Vendu",
+                soldOut: "Épuisé",
+                addToCart: "Ajouter au Panier",
+                footerText1: "✨ Tous les objets sont faits avec amour et créativité ✨",
+                footerText2: "🎨 Chaque pièce est unique et faite à la main par moi 🎨",
+                footerText3: "© 2024 Mon Coin Créatif | Fait avec ❤️"
+            },
+            de: {
+                logoTitle: "Meine Kreative Ecke",
+                home: "Startseite",
+                about: "Über",
+                shop: "Geschäft",
+                contact: "Kontakt",
+                heroTitle: "Meine Kreative Ecke",
+                heroSubtitle: "Handgemachtes mit Liebe ❤️",
+                aboutTitle: "Über Mich",
+                aboutText1: "Hallo! Ich bin Dani und ich bin 8 Jahre alt! 👋",
+                aboutText2: "Ich liebe es, Dinge mit meinen Händen zu machen. Jedes Stück hier ist besonders, weil ich es selbst gemacht habe!",
+                aboutText3: "Jedes Handwerk ist einzigartig! 🌈",
+                aboutText4: "Danke, dass du meine kreative Ecke besuchst!",
+                shopTitle: "Meine Kreationen",
+                contactTitle: "Möchten Sie Etwas Kaufen?",
+                yourName: "Ihr Name:",
+                yourEmail: "Ihre E-Mail:",
+                whichCreation: "Welche Kreation Möchten Sie?",
+                chooseOne: "Wählen Sie...",
+                yourMessage: "Ihre Nachricht:",
+                sendMessage: "Nachricht Senden →",
+                available: "Verfügbar",
+                sold: "Verkauft",
+                soldOut: "Ausverkauft",
+                addToCart: "In den Warenkorb",
+                footerText1: "✨ Alle Handarbeiten sind mit Liebe und Kreativität gemacht ✨",
+                footerText2: "🎨 Jedes Stück ist einzigartig und handgefertigt von mir 🎨",
+                footerText3: "© 2024 Meine Kreative Ecke | Mit ❤️ gemacht"
+            },
+            it: {
+                logoTitle: "Il Mio Angolo Creativo",
+                home: "Home",
+                about: "Chi Sono",
+                shop: "Negozio",
+                contact: "Contatto",
+                heroTitle: "Il Mio Angolo Creativo",
+                heroSubtitle: "Artigianato Fatto con Amore ❤️",
+                aboutTitle: "Chi Sono",
+                aboutText1: "Ciao! Sono Dani e ho 8 anni! 👋",
+                aboutText2: "Amo fare cose con le mie mani. Ogni pezzo qui è speciale perché l'ho fatto io!",
+                aboutText3: "Ogni creazione è unica! 🌈",
+                aboutText4: "Grazie per aver visitato il mio angolo creativo!",
+                shopTitle: "Le Mie Creazioni",
+                contactTitle: "Vuoi Comprare Qualcosa?",
+                yourName: "Il Tuo Nome:",
+                yourEmail: "La Tua Email:",
+                whichCreation: "Quale Creazione Vuoi?",
+                chooseOne: "Scegli...",
+                yourMessage: "Il Tuo Messaggio:",
+                sendMessage: "Invia Messaggio →",
+                available: "Disponibile",
+                sold: "Venduto",
+                soldOut: "Esaurito",
+                addToCart: "Aggiungi al Carrello",
+                footerText1: "✨ Tutti gli oggetti sono fatti con amore e creatività ✨",
+                footerText2: "🎨 Ogni pezzo è unico e fatto a mano da me 🎨",
+                footerText3: "© 2024 Il Mio Angolo Creativo | Fatto con ❤️"
+            }
+        };
+
+        // Currency rates (base: USD)
+        const currencyRates = {
+            usd: { symbol: '$', rate: 1 },
+            eur: { symbol: '€', rate: 0.92 },
+            gbp: { symbol: '£', rate: 0.79 },
+            jpy: { symbol: '¥', rate: 149.50 },
+            cad: { symbol: 'C$', rate: 1.36 },
+            aud: { symbol: 'A$', rate: 1.53 },
+            crc: { symbol: '₡', rate: 510.00 }
+        };
+
+        // Product prices in USD
+        const productPrices = {
+            'rainbow': 25,
+            'puppy': 15,
+            'ocean': 30,
+            'dinosaur': 15,
+            'flowers': 25,
+            'pizza': 12
+        };
+
+        let currentLanguage = 'es';
+        let currentCurrency = 'usd';
         let cartCount = 0;
-        
+
+        // Change language
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            const t = translations[lang];
+
+            // Update navigation
+            document.querySelector('.logo').innerHTML = `🎨 ${t.logoTitle}`;
+            document.querySelectorAll('.nav-menu a')[0].textContent = t.home;
+            document.querySelectorAll('.nav-menu a')[1].textContent = t.about;
+            document.querySelectorAll('.nav-menu a')[2].textContent = t.shop;
+            document.querySelectorAll('.nav-menu a')[3].textContent = t.contact;
+
+            // Update hero
+            document.querySelector('.hero h1').textContent = t.heroTitle;
+            document.querySelector('.hero p').textContent = t.heroSubtitle;
+
+            // Update about section
+            document.querySelectorAll('.section-title')[0].textContent = t.aboutTitle;
+            const aboutPs = document.querySelectorAll('.about-content p');
+            aboutPs[0].textContent = t.aboutText1;
+            aboutPs[1].textContent = t.aboutText2;
+            aboutPs[2].textContent = t.aboutText3;
+            aboutPs[3].textContent = t.aboutText4;
+
+            // Update shop section
+            document.querySelectorAll('.section-title')[1].textContent = t.shopTitle;
+
+            // Update contact section
+            document.querySelectorAll('.section-title')[2].textContent = t.contactTitle;
+            document.querySelectorAll('.form-group label')[0].textContent = t.yourName;
+            document.querySelectorAll('.form-group label')[1].textContent = t.yourEmail;
+            document.querySelectorAll('.form-group label')[2].textContent = t.whichCreation;
+            document.querySelectorAll('.form-group label')[3].textContent = t.yourMessage;
+            document.querySelector('.submit-btn').textContent = t.sendMessage;
+
+            // Update status badges
+            document.querySelectorAll('.available').forEach(badge => {
+                badge.textContent = t.available;
+            });
+            document.querySelectorAll('.sold').forEach(badge => {
+                badge.textContent = t.sold;
+            });
+
+            // Update buttons
+            document.querySelectorAll('.add-to-cart:not(:disabled)').forEach(btn => {
+                btn.textContent = t.addToCart;
+            });
+            document.querySelectorAll('.add-to-cart:disabled').forEach(btn => {
+                btn.textContent = t.soldOut;
+            });
+
+            // Update footer
+            const footerPs = document.querySelectorAll('.footer-content p');
+            footerPs[0].textContent = t.footerText1;
+            footerPs[1].textContent = t.footerText2;
+            footerPs[2].textContent = t.footerText3;
+        }
+
+        // Change currency and update prices
+        function changeCurrency(currency) {
+            currentCurrency = currency;
+            const rate = currencyRates[currency].rate;
+            const symbol = currencyRates[currency].symbol;
+
+            // Update all prices
+            document.querySelectorAll('.price').forEach(priceEl => {
+                const productId = priceEl.getAttribute('data-product');
+                const basePrice = productPrices[productId];
+                const convertedPrice = (basePrice * rate).toFixed(currency === 'jpy' || currency === 'crc' ? 0 : 2);
+                priceEl.textContent = `${symbol}${convertedPrice}`;
+            });
+        }
+
+        // Add to Cart functionality
         function addToCart(itemName) {
             cartCount++;
             const cartBadge = document.getElementById('cart-count');
             cartBadge.textContent = cartCount;
             cartBadge.style.display = 'block';
-            alert(`"${itemName}" added to cart! 🎉\n\nCart items: ${cartCount}`);
+            
+            const t = translations[currentLanguage];
+            alert(`"${itemName}" ${t.addToCart.toLowerCase()}! 🎉\n\nCart items: ${cartCount}`);
         }
 
         // Form submission
@@ -524,14 +784,26 @@
             event.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const item = document.getElementById('item').value;
-            const message = document.getElementById('message').value;
             
             alert(`Thank you ${name}! 🎨\n\nYour message has been received!\nWe'll get back to you at ${email} soon!`);
             
-            // Reset form
             event.target.reset();
         }
+
+        // Event listeners
+        document.getElementById('language').addEventListener('change', function(e) {
+            changeLanguage(e.target.value);
+        });
+
+        document.getElementById('currency').addEventListener('change', function(e) {
+            changeCurrency(e.target.value);
+        });
+
+        // Initialize with default currency prices
+        window.addEventListener('DOMContentLoaded', function() {
+            changeLanguage('es'); // Set Spanish as default
+            changeCurrency('usd');
+        });
     </script>
 
 </body>
